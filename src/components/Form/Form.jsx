@@ -1,32 +1,59 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
+import { addToLocalStorage } from "../../localstorage/locaStorage";
 
 const Form = () => {
-  const [priority, setPriority] = useState();
+  const [priority, setPriority] = useState("low");
   const [formData, setFormData] = useState({
-    title: '',
-    details: ''
+    title: "",
+    details: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
+    const task = {
+      id: new Date().getTime(),
+      title: formData.title,
+      details: formData.details,
+      priority: priority,
+    };
+    const addToLocal = addToLocalStorage(task);
+    console.log(addToLocal)
+    setFormData({ title: "", details: "" });
+    setPriority("low");
+    console.log(task);
+
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Task added to List!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   return (
     <>
-      <form className="my-10 bg-[#F5EEE6] p-10 rounded-md" onSubmit={handleSubmit}>
+      <form
+        className="my-10 bg-[#F5EEE6] p-10 rounded-md"
+        onSubmit={handleSubmit}
+      >
         {/* Title and selection */}
         <div className="flex justify-between gap-5">
           <div className="flex flex-col gap-1">
-            <label htmlFor="title" className="text-[#030637] text-xl font-medium">
+            <label
+              htmlFor="title"
+              className="text-[#030637] text-xl font-medium"
+            >
               Title
             </label>
             <input
@@ -39,6 +66,12 @@ const Form = () => {
             />
           </div>
           <div className="flex flex-col justify-end">
+            <label
+              htmlFor="priority"
+              className="text-[#030637] text-xl font-medium"
+            >
+              Select Priority
+            </label>
             <select
               name="priority"
               className="border-2 px-3 text-lg rounded-md py-1"
@@ -54,7 +87,10 @@ const Form = () => {
         </div>
         {/* Details */}
         <div className="flex flex-col gap-1 my-4">
-          <label htmlFor="details" className="text-[#030637] text-xl font-medium">
+          <label
+            htmlFor="details"
+            className="text-[#030637] text-xl font-medium"
+          >
             Details
           </label>
           <textarea

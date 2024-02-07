@@ -1,8 +1,12 @@
 const addToLocalStorage = (obj) => { 
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.push(obj);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    return {obj, message: "Task Added!"}
+    try {
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        return {obj, message: "Task Added!"}
+    } catch (error) {
+        return {message: error}
+    }
  }
 
 const getFromLocalStorage = () => { 
