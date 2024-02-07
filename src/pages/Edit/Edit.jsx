@@ -10,7 +10,8 @@ const Edit = () => {
     //get the todo from localhost
     useEffect(() => { 
         const tasks = getFromLocalStorage(id);
-        setTask(tasks.filter((task) => task.id == id))
+        const filterdTask = (tasks.filter((task) => task.id == id))
+        setTask(filterdTask[0])
      },[id])
 
      console.log(task)
@@ -22,11 +23,15 @@ const Edit = () => {
      });
 
      useEffect(() => { 
-        setFormData({
-            title: task?.title,
-            details : task.details,
-        })
-      },[id])
+      setFormData(
+        {
+          title: task?.title,
+          details: task?.details
+        }
+      )
+      setPriority(task?.priority)
+      },[task])
+
    
      const handleChange = (e) => {
        const { name, value } = e.target;
@@ -91,6 +96,7 @@ const Edit = () => {
                 name="title"
                 placeholder="Enter Title"
                 className="border-2 px-3 text-lg rounded-md py-1"
+                defaultValue={task?.title}
                 value={formData.title}
                 onChange={handleChange}
               />
