@@ -2,6 +2,8 @@ import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "./common/navbar/Navbar";
 import { GoHome } from "react-icons/go";
 import { AiFillFileText, AiTwotoneWallet, } from "react-icons/ai";
+import { FaPenNib } from "react-icons/fa";
+
 import Navlinks from "./common/navlinks/Navlinks";
 
 
@@ -30,11 +32,15 @@ function App() {
             <NavLink to={'/'}><GoHome className=" text-2xl font-bold"/><span className=" text-md font-semibold">Dashboard</span></NavLink>
           </li>
           <li>
+            <NavLink to={'/stock'}><FaPenNib  className=" text-2xl font-bold"/><span className=" text-md font-semibold">Add ToDo</span></NavLink>
+          </li>
+          <li>
             <NavLink to={'/orders'}><AiFillFileText className=" text-2xl font-bold"/><span className=" text-md font-semibold">OnGoing</span></NavLink>
           </li>
           <li>
             <NavLink to={'/stock'}><AiTwotoneWallet  className=" text-2xl font-bold"/><span className=" text-md font-semibold">Completed</span></NavLink>
           </li>
+          
         </ul>
       </div>
     </div>

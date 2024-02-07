@@ -25,6 +25,7 @@ const Form = () => {
       title: formData.title,
       details: formData.details,
       priority: priority,
+      status: 'incompleted'
     };
     // const addToLocal = addToLocalStorage(task);
     // console.log(addToLocal)

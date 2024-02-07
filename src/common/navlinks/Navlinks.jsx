@@ -19,7 +19,7 @@ const Navlinks = () => {
         </li>
         <li>
           <NavLink
-            to={"/sell"}
+            to={"/add-todo"}
             className={({ isActive, isPending }) =>
               isPending
                 ? "pending"
