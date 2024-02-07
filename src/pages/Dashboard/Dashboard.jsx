@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { BiEdit } from "react-icons/bi";
 import { addToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from "../../localstorage/locaStorage";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState();
@@ -76,7 +78,9 @@ const Dashboard = () => {
       {tasks?.map((task) => 
         <div key={task.id} className={task.priority === 'low' ? ` card bg-blue-400 text-gray-950` : task.priority === 'medium' ? ` card bg-yellow-400 text-gray-950` : ` card bg-red-400 text-gray-950`}>
           <div className=" px-4 py-5">
+            <Link to={`/edit/${task.id}`} className=" absolute right-5"><BiEdit className=" text-gray-100 hover:text-black active:opacity-30"/></Link>
             <h2 className=" text-xl text-center font-semibold">{task.title.charAt(0).toUpperCase() + task.title.slice(1)}</h2>
+            
             <p className=" text-center text-xs">Status: <span className={task.status === 'complete'? 'text-green-700': 'text-red-700 font-semibold' }>{task.status?.toUpperCase()}</span></p>
             <hr className=" text-gray-500 my-2"/>
             <p className=" text-base text-gray-800 mb-7 text-justify">{task.details.charAt(0).toUpperCase() + task.details.slice(1)}</p>
