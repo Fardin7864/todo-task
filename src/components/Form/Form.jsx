@@ -26,19 +26,29 @@ const Form = () => {
       details: formData.details,
       priority: priority,
     };
-    const addToLocal = addToLocalStorage(task);
-    console.log(addToLocal)
+    // const addToLocal = addToLocalStorage(task);
+    // console.log(addToLocal)
     setFormData({ title: "", details: "" });
     setPriority("low");
-    console.log(task);
+    if(!task.title || !task.details){
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Title and Details Required!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+    }else{
+        addToLocalStorage(task)
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Task added to List!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+    }
 
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Task added to List!",
-      showConfirmButton: false,
-      timer: 1500,
-    });
   };
 
   return (
