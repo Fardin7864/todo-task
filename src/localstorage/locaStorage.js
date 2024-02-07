@@ -10,14 +10,14 @@ const addToLocalStorage = (obj) => {
  }
 
 const getFromLocalStorage = () => { 
-    const task = JSON.parse(localStorage.getItem('task')) || []
+    const task = JSON.parse(localStorage.getItem('tasks')) || []
     return task;
  }
 
 const removeFromLocalStorage = (id) => { 
     const tasks = getFromLocalStorage();
     const afterRemove = tasks.filter(task => task.id !== id );
-    localStorage.setItem('tasks', afterRemove);
+    localStorage.setItem('tasks',JSON.stringify(afterRemove));
     return {id, message: `${id} Removed from storage!`}
  }
 

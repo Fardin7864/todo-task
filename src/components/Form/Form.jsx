@@ -19,7 +19,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    // console.log("Form Data:", formData);
     const task = {
       id: new Date().getTime(),
       title: formData.title,
