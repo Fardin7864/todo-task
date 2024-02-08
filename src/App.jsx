@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Navbar from "./common/navbar/Navbar";
 import { GoHome } from "react-icons/go";
-import { AiFillFileText, AiTwotoneWallet, } from "react-icons/ai";
 import { FaPenNib } from "react-icons/fa";
 
 import Navlinks from "./common/navlinks/Navlinks";
@@ -27,18 +26,12 @@ function App() {
         > </label>
         <ul className="menu p-4 w-80 min-h-full bg-[#030637] text-base-100">
           {/* Sidebar content here */}
-          <li className="flex flex-row items-center"><img src="/public/logo.png" alt=""  className="w-20 "/><h4 className=" text-2xl font-bold">VELOCI</h4></li>
+          <li className="flex flex-row items-center"><img src={'https://i.ibb.co/nw4XPPY/logo.png'} alt=""  className="w-20 "/><h4 className=" text-2xl font-bold">VELOCI</h4></li>
           <li>
             <NavLink to={'/'}><GoHome className=" text-2xl font-bold"/><span className=" text-md font-semibold">Dashboard</span></NavLink>
           </li>
           <li>
             <NavLink to={'/add-todo'}><FaPenNib  className=" text-2xl font-bold"/><span className=" text-md font-semibold">Add ToDo</span></NavLink>
-          </li>
-          <li>
-            <NavLink to={'/orders'}><AiFillFileText className=" text-2xl font-bold"/><span className=" text-md font-semibold">OnGoing</span></NavLink>
-          </li>
-          <li>
-            <NavLink to={'/stock'}><AiTwotoneWallet  className=" text-2xl font-bold"/><span className=" text-md font-semibold">Completed</span></NavLink>
           </li>
           
         </ul>
