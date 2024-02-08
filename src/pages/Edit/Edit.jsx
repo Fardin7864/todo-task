@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { addToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '../../localstorage/locaStorage';
 import Swal from 'sweetalert2';
 
 const Edit = () => {
     const {id} = useParams()
     const [task, setTask] =useState();
+    const navigate = useNavigate();
 
     //get the todo from localhost
     useEffect(() => { 
@@ -49,7 +50,7 @@ const Edit = () => {
          title: formData.title,
          details: formData.details,
          priority: priority,
-         status: 'incompleted'
+         status: task.status
        };
        // const addToLocal = addToLocalStorage(task);
        
@@ -67,10 +68,11 @@ const Edit = () => {
            Swal.fire({
                position: "top-end",
                icon: "success",
-               title: "Task added to List!",
+               title: "Edited the ToDo successfully!",
                showConfirmButton: false,
                timer: 1500,
              });
+             navigate(-1)
        }
    
      };
@@ -79,11 +81,11 @@ const Edit = () => {
     return (
         <>
         <form
-          className="my-10 bg-[#F5EEE6] p-10 rounded-md"
+          className="my-10 bg-[#F5EEE6] p-10 rounded-md mx-3"
           onSubmit={handleSubmit}
         >
           {/* Title and selection */}
-          <div className="flex justify-between gap-5">
+          <div className="flex flex-col lg:flex-row justify-between gap-5">
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="title"

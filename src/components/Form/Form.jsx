@@ -55,11 +55,11 @@ const Form = () => {
   return (
     <>
       <form
-        className="my-10 bg-[#F5EEE6] p-10 rounded-md"
+        className="my-10 bg-[#F5EEE6] p-10 rounded-md mx-3"
         onSubmit={handleSubmit}
       >
         {/* Title and selection */}
-        <div className="flex justify-between gap-5">
+        <div className="flex flex-col lg:flex-row justify-between gap-5">
           <div className="flex flex-col gap-1">
             <label
               htmlFor="title"

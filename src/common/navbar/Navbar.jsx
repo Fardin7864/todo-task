@@ -1,10 +1,8 @@
-import {
-  AiFillFileText,
-  AiTwotoneWallet,
-} from "react-icons/ai";
+
 import { GoHome } from "react-icons/go";
 import { NavLink } from "react-router-dom";
 import Navlinks from "../navlinks/Navlinks";
+import { FaPenNib } from "react-icons/fa";
 
 const Navbar = () => {
   const navLink = (
@@ -17,15 +15,9 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to={"/orders"}>
-          <AiFillFileText className=" text-2xl font-bold" />
-          <span className=" text-md font-semibold">OnGoing</span>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={"/stock"}>
-          <AiTwotoneWallet className=" text-2xl font-bold" />
-          <span className=" text-md font-semibold">Completed</span>
+        <NavLink to={'/add-todo'}>
+          <FaPenNib className=" text-2xl font-bold" />
+          <span className=" text-md font-semibold">Add ToDo</span>
         </NavLink>
       </li>
     </>
